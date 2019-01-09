@@ -9,30 +9,12 @@ Description of Scenario
 Rational for the Proposed Product
 	A dedicated program would be better tailored to keep track of my father's needs than another solution. He is not the most tech-savy person so a graphical user interface is preferred over a command line interface. I will be building this product in Java because it is highly portable and it is the language that I am most comfortable with. The client would like it if the program could automatically sync with his email accounts and perhaps be able to automatically add people as contacts based on how many times he communicated with them, however I think that that is beyond my ability.
 
-
---->NOT PART OF THE WORD COUNT<---
-
-Prototype Feedback in First Interview 
+Prototype Feedback in First Interview -->NOT PART OF THE WORD COUNT<--
 	  The GUI is clean and well-organized, with placement of the fields in logical order common to other contact applications. The simplicity is a change from commercial applications that put an emphasis on design, but this does not impact the ease of usability of the GUI. There are appropriate fields for essential contact information, I like the 'People', Import', and 'Export' tabs at the top and the three action buttons (Search, Add, Edit Profile) below. Everything is visible and self-explanatory.
 	  The Search feature should be a field instead of a button, which sorts as the user types. Also, the contact fields should include a category, linked to a sort feature, with standard categories like family, friends, work, but enabling user-defined categories, too. The sort feature will than be used to sort by category or by other fields, such as email domain.
 	  Also, please change the Address field to include standard address fields like street address, city, state/province, postal code, country, and include more than one phone field option (home,work, mobile)
 	  Another field might include Skype, WhatsApp and other messaging options. And maybe social media like FB and LinkedIn?
 
---->NOT PART OF THE WORD COUNT<---
-
 Success Criteria
-	-Things it does
-		-Import xml/csv
-		-Search and sort database
-		-User-changable database characteristics
-	-User friendliness
-	      -Help Menu
-	      -Manual/help page
-	      -Easy to install 
-	-Error handling
-	       -
-	-System compatability
-		-RAM usage
-		-Storage usage
-		-CPU usage
-		-Portability
+    • The program is able to run on the client’s machine
+    • 
