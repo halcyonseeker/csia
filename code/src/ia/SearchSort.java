@@ -9,6 +9,6 @@ package ia;
  *
  * @author apotheosis
  */
-public class MainGui {
+public class SearchSort {
     
 }

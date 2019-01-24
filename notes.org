@@ -5,5 +5,10 @@
 * TODO Complete searching and sorting
 ** TODO figure out how I can get the program to continuously search as the user types
 * TODO Complete planning stuff
-
-
+* TODO add a todo list to the main class?
+* TODO start coding
+** DONE create template classes
+   CLOSED: [2019-01-23 Wed 13:33]
+*** TODO fix template classes
+** TODO build GUI
+*** TODO investigate dropdown filechooser
