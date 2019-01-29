@@ -18,7 +18,7 @@ public class Person {
     private String organization = "not set yet";
     private String[] category = {"not set yet"};
     Address homeAddress = new Address();
-    private String description = "not set yet";
+    private String notes = "not set yet";
     
     
     
@@ -28,7 +28,7 @@ public class Person {
     
     
     
-    public Person (String name, int age, String[] email, String[] phone, birthday(), String organization, String[] category, homeAddress(), String description){
+    public Person (String name, int age, String[] email, String[] phone, Date birhday, String organization, String[] category, Address homeAddress, String notes){
         this.name = name;
         this.age = age;
         this.email = email;
@@ -37,7 +37,7 @@ public class Person {
         this.organization = organization;
         this.category = category;
         this.homeAddress = homeAddress;
-        this.description = description;
+        this.notes = notes;
     }
     
     
@@ -53,7 +53,7 @@ public class Person {
     public void setPhone (String[] phone){
         this.phone = phone;
     }
-    public void setBirthday (birthday()){
+    public void setBirthday (Date birthday){
         this.birthday = birthday;
     }
     public void setOrganization (String organization){
@@ -62,11 +62,11 @@ public class Person {
     public void setCategory (String[] category){
         this.category = category;
     }
-    public void sethomeAddress (homeAddress()){
+    public void sethomeAddress (Address homeAddress){
         this.homeAddress = homeAddress;
     }
-    public void setDescription (String description){
-        this.description = description;
+    public void setDescription (String notes){
+        this.notes = notes;
     }
     
     
@@ -83,7 +83,7 @@ public class Person {
     public String[] getPhone (){
         return phone;
     }
-    public String getBirthday (){
+    public Date getBirthday (){
         return birthday;
     }
     public String getOrganization (){
@@ -92,11 +92,11 @@ public class Person {
     public String[] getCategory (){
         return category;
     }
-    public String getHomeAddress (){
+    public Address getHomeAddress (){
         return homeAddress;
     }
-    public String getdescription (){
-        return description;
+    public String getNotes (){
+        return notes;
     }
     
 }

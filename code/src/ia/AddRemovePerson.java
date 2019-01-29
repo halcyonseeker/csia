@@ -11,4 +11,49 @@ package ia;
  */
 public class AddRemovePerson {
     
+    public static boolean importXML(){
+        boolean succesful = false;
+        return succesful;
+    }
+    public static boolean importCSV(){
+        boolean succesful = false;
+        return succesful;
+    }
+    public static boolean importVCF(){
+        boolean succesful = false;
+        return succesful;
+    }
+    public static boolean addPerson(){
+        boolean succesful = false;
+        return succesful;
+    }
+    
+    
+    public static boolean exportAsXML(){
+        boolean succesful = false;
+        return succesful;
+    }
+    public static boolean exportAsCSV(){
+        boolean succesful = false;
+        return succesful;
+    }
+    public static boolean exportAsVCF(){
+        boolean succesful = false;
+        return succesful;
+    }
+    public static boolean removePerson (){
+        boolean succesful = false;
+        return succesful;
+    }
+    
+    public static boolean editPerson(){
+        boolean succesful = false;
+        return succesful;
+    }
+    
+    public static boolean saveToDisk(){
+        boolean succesful = false;
+        return succesful;
+    }
+    
 }
