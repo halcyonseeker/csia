@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia;
+package code2;
 
 /**
  *
  * @author apotheosis
  */
 public class Person {
-    private String name = "not set yet";
+        private String name = "not set yet";
     private int age = -99;
     private String[] email = {"not set yet"};
     private String[] phone = {"not set yet"};
@@ -99,4 +99,5 @@ public class Person {
         return notes;
     }
     
+
 }
