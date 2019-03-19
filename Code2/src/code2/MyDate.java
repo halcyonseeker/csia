@@ -9,18 +9,18 @@ package code2;
  *
  * @author apotheosis
  */
-public class Date {
+public class MyDate {
      private String[] day = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     private byte date = -25;
     private String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private int year = -999; 
     
     
-    public Date (){
+    public MyDate (){
         
     }
     
-    public Date (String[] day, byte date, String[] month, int year) {
+    public MyDate (String[] day, byte date, String[] month, int year) {
         this.day = day;
         this.date = date;
         this.month = month;

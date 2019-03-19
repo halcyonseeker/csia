@@ -10,13 +10,13 @@ package code2;
  * @author apotheosis
  */
 public class Person {
-        private String name = "not set yet";
+    private String name = "not set yet";
     private int age = -99;
-    private String[] email = {"not set yet"};
-    private String[] phone = {"not set yet"};
-    Date birthday = new Date();
+    private String[] email = {"not set yet"}; //possibly ArrayList
+    private String[] phone = {"not set yet"}; //possibly ArrayList
+    MyDate birthday = new MyDate();
     private String organization = "not set yet";
-    private String[] category = {"not set yet"};
+    private String[] category = {"not set yet"}; //ArrayList
     Address homeAddress = new Address();
     private String notes = "not set yet";
     
@@ -28,7 +28,7 @@ public class Person {
     
     
     
-    public Person (String name, int age, String[] email, String[] phone, Date birhday, String organization, String[] category, Address homeAddress, String notes){
+    public Person (String name, int age, String[] email, String[] phone, MyDate birhday, String organization, String[] category, Address homeAddress, String notes){
         this.name = name;
         this.age = age;
         this.email = email;
@@ -53,7 +53,7 @@ public class Person {
     public void setPhone (String[] phone){
         this.phone = phone;
     }
-    public void setBirthday (Date birthday){
+    public void setBirthday (MyDate birthday){
         this.birthday = birthday;
     }
     public void setOrganization (String organization){
@@ -83,7 +83,7 @@ public class Person {
     public String[] getPhone (){
         return phone;
     }
-    public Date getBirthday (){
+    public MyDate getBirthday (){
         return birthday;
     }
     public String getOrganization (){

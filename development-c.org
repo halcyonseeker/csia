@@ -1,0 +1,23 @@
+#+TITLE: Criterion C -- Development 
+*MAX WORD COUNT 1000*
+
+- Short introduction
+- Summary list of all techniques
+- Structure of the program
+  - Why oop
+  - class structure
+  - 
+- Data strucutres used
+  - what
+  - why
+- algorithms
+  - what
+  - why
+- user-interface
+  - what
+  - why
+  - how
+- software tools used
+  - what
+  - why
+- 
