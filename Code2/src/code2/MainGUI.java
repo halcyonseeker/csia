@@ -4,14 +4,13 @@ import java.util.ArrayList;
 /*
 Extensibility/TODO list
 - More refined GUI
-- TODO add 1900 to 2022 in data of birth cb
 - add person button leads to window instead of tab
 - allow a person to be placed in more than one cate2gory
   - replace cetegory combo box with a popup box containing check boxes and an add category button and text field
 */
 public class MainGUI extends javax.swing.JFrame {
 
-    private ArrayList<Person> peopleArray = new ArrayList<Person>();
+    //private ArrayList<Person> peopleArrayList = new ArrayList<Person>();
     
     /**
      * Creates new form MainGUI
@@ -45,6 +44,7 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         phone3Label = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
         newPersonPanel = new javax.swing.JPanel();
         streetTF = new javax.swing.JTextField();
         stateTF = new javax.swing.JTextField();
@@ -107,11 +107,6 @@ public class MainGUI extends javax.swing.JFrame {
 
         phone2Label.setText("Phone 2:");
 
-        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Person not set", "Person not set", "Person not set", "Person not set" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(peopleList);
 
         nameLabel.setText("Name:");
@@ -127,6 +122,11 @@ public class MainGUI extends javax.swing.JFrame {
         dOBLabel.setText("Date of Birth:");
 
         deleteProfileButton.setText("Delete");
+        deleteProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                deleteProfileButtonMouseReleased(evt);
+            }
+        });
         deleteProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteProfileButtonActionPerformed(evt);
@@ -141,49 +141,56 @@ public class MainGUI extends javax.swing.JFrame {
 
         phone3Label.setText("Phone 3:");
 
+        searchButton.setText("Search");
+        searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                searchButtonMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout peoplePanelLayout = new javax.swing.GroupLayout(peoplePanel);
         peoplePanel.setLayout(peoplePanelLayout);
         peoplePanelLayout.setHorizontalGroup(
             peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(peoplePanelLayout.createSequentialGroup()
-                .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peoplePanelLayout.createSequentialGroup()
-                        .addGap(0, 214, Short.MAX_VALUE)
-                        .addComponent(editProfileButton)
-                        .addGap(24, 24, 24)
-                        .addComponent(deleteProfileButton))
-                    .addGroup(peoplePanelLayout.createSequentialGroup()
-                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(notesLabel)
-                            .addComponent(emailLabel)
-                            .addComponent(email2Label)
-                            .addComponent(phone2Label)
-                            .addComponent(organizatonLabel)
-                            .addComponent(addressLabel)
-                            .addComponent(categoriesLabel)
-                            .addComponent(ageLabel)
-                            .addComponent(nameLabel)
-                            .addComponent(dOBLabel)
-                            .addComponent(jLabel6)
-                            .addComponent(phoneLabel)
-                            .addComponent(phone3Label))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(notesLabel)
+                    .addComponent(emailLabel)
+                    .addComponent(email2Label)
+                    .addComponent(phone2Label)
+                    .addComponent(organizatonLabel)
+                    .addComponent(addressLabel)
+                    .addComponent(categoriesLabel)
+                    .addComponent(ageLabel)
+                    .addComponent(nameLabel)
+                    .addComponent(dOBLabel)
+                    .addComponent(jLabel6)
+                    .addComponent(phoneLabel)
+                    .addComponent(phone3Label))
+                .addGap(0, 282, Short.MAX_VALUE))
+            .addGroup(peoplePanelLayout.createSequentialGroup()
+                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editProfileButton)
+                .addGap(24, 24, 24)
+                .addComponent(deleteProfileButton))
         );
         peoplePanelLayout.setVerticalGroup(
             peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(peoplePanelLayout.createSequentialGroup()
+                .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editProfileButton)
+                    .addComponent(deleteProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton)
+                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(editProfileButton)
-                        .addComponent(deleteProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                     .addGroup(peoplePanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ageLabel)
@@ -207,12 +214,9 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(addressLabel)
                         .addGap(18, 18, 18)
                         .addComponent(categoriesLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(notesLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(peoplePanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))))
+                        .addComponent(notesLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("People", peoplePanel);
@@ -501,12 +505,14 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterPersonButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterPersonButtonMouseReleased
+        //AddRemovePerson.add();
+        /*
         MyDate d = new MyDate(Byte.parseByte(dateCB.getSelectedItem()+""), monthCB.getSelectedItem()+"", Integer.parseInt(yearCB.getSelectedItem()+""));
         Address a = new Address(streetTF.getText()+"", stateTF.getText()+"", countryTF.getText()+"", Integer.parseInt(zipTF.getText()+""));
         String [] email = {firstEmailTF.getText(), secondEmailTF.getText(), thirdEmailTF.getText()};
         String [] phone = {firstPhoneTF.getText(), secondPhoneTF.getText(), thirdPhoneTF.getText()};
         String [] category = {categoryCB.getSelectedItem()+""};
-        peopleArray.add(new Person(
+        peopleArrayList.add(new Person(
                 nameTF.getText(),
                 Integer.parseInt(ageTF.getText()), 
                 d,
@@ -517,11 +523,29 @@ public class MainGUI extends javax.swing.JFrame {
                 category,
                 notesTA.getText()
         ));
-     
+        nameTF.setText("");
+        ageTF.setText("");
+        dateCB.setSelectedIndex(0);
+        monthCB.setSelectedIndex(0);
+        yearCB.setSelectedIndex(0);
+        firstEmailTF.setText("");
+        secondEmailTF.setText("");
+        thirdEmailTF.setText("");
+        firstPhoneTF.setText("");
+        secondPhoneTF.setText("");
+        thirdPhoneTF.setText("");
+        organizationTF.setText("");
+        streetTF.setText("");
+        stateTF.setText("");
+        countryTF.setText("");
+        categoryCB.setSelectedIndex(0);
+        notesTA.setText("");
+        */    
     }//GEN-LAST:event_enterPersonButtonMouseReleased
 
     private void searchTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTFActionPerformed
-        // TODO add your handling code here:
+        // Should I use this or the search button?
+        
     }//GEN-LAST:event_searchTFActionPerformed
 
     private void deleteProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteProfileButtonActionPerformed
@@ -529,8 +553,18 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteProfileButtonActionPerformed
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
-        // TODO add your handling code here:
+        //Something
     }//GEN-LAST:event_exportButtonActionPerformed
+
+    private void deleteProfileButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteProfileButtonMouseReleased
+        //AddRemovePerson.remove(/*HOW DO I FIND THE CURRENT PERSON*/)
+    }//GEN-LAST:event_deleteProfileButtonMouseReleased
+
+    private void searchButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseReleased
+        String searchTerm = searchButton.getText();
+        //send searchTerm to SearchSort.search();
+        //peopleList.setText elements of the arraylist with attributes that match the search string
+    }//GEN-LAST:event_searchButtonMouseReleased
 
     /**
      * @param args the command line arguments
@@ -565,6 +599,10 @@ public class MainGUI extends javax.swing.JFrame {
                 new MainGUI().setVisible(true);
             }
         });
+    }
+    public static void rickRoll () {
+        //insert selenium code here 
+        //if(name.equals("Rick")){rickRoll};
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -624,6 +662,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel phone2Label;
     private javax.swing.JLabel phone3Label;
     private javax.swing.JLabel phoneLabel;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchTF;
     private javax.swing.JTextField secondEmailTF;
     private javax.swing.JTextField secondPhoneTF;
