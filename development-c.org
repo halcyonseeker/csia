@@ -10,7 +10,13 @@ Netbeans using Java.
 * Summary list of all techniques
 - List of all basic Java stuff I used
 * Structure of the program
-  - Why oop
+  - Neither Java nor OOP are particularly well suited to my simple
+    needs (I'd rather store my data in a .txt file and parse it with a
+    shell script), but OOP is the focus of my IB CS class and my
+    teacher and I are more comfortable with it and Java than with
+    shell scripting. However, the use of Java comes with the benefit
+    of portability; a shell script written in GNU/Linux may not run
+    well on a Mac and would certainly not work on a Windows machine.   
   - class structure
 * Data strucutres used
   - what

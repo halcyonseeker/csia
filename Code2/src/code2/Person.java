@@ -39,6 +39,10 @@ public class Person {
         this.homeAddress = homeAddress;
         this.notes = notes;
     }
+
+    Person(String text, int parseInt, MyDate d, String[] email, String[] phone, String text0, Address a, String[] category, String text1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     public void setName (String name){
