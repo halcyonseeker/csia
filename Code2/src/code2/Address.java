@@ -13,7 +13,7 @@ public class Address {
     private String street = "not set yet";
     private String state = "not set yet";
     private String country = "not set yet";
-    private int zip = -9999;
+    private String zip = "not set yet";
     
       
     
@@ -22,7 +22,7 @@ public class Address {
     }
     
     
-    public Address (String street, String state, String country, int zip){
+    public Address (String street, String state, String country, String zip){
         this.street = street;
         this.state = state;
         this.country = country;
@@ -40,7 +40,7 @@ public class Address {
     public void setCountry (String country){
         this.country = country;
     }
-    public void setZip (int zip){
+    public void setZip (String zip){
         this.zip = zip;
     }
     
@@ -55,7 +55,7 @@ public class Address {
     public String getCountry (){
         return country;
     }
-    public int getZip (){
+    public String getZip (){
         return zip;
     }
 }

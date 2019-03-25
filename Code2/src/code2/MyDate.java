@@ -10,49 +10,40 @@ package code2;
  * @author apotheosis
  */
 public class MyDate {
-    //private String[] day = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-    private byte date = -25;
-    private String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    //private String month = "not set yet";
-    private int year = -999; 
+    private String date = "not set yet";
+    private String month = "not set yet";
+    private String year = "net set yet"; 
     
     
     public MyDate (){
         
     }
     
-    public MyDate (/*String[] day,*/ byte date, String[] month, int year) {
-        //this.day = day;
+    public MyDate (String date, String month, String year) {
         this.date = date;
         this.month = month;
         this.year = year;
     }
-    
-    /*
-    public void setDay (String[] day){
-        this.day = day;
-    } */  
-    public void setDate (byte date){
+
+
+    public void setDate (String date){
         this.date = date;
     }
-    public void setMonth (String[] month){
+    public void setMonth (String month){
         this.month = month;
     }
-    public void setYear (int year){
+    public void setYear (String year){
         this.year = year;
     }
     
-    /*
-    public String[] getDay (){
-        return day;
-    }*/
-    public byte date (){
+
+    public String date (){
         return date;
     }
-    public String[] month (){
+    public String month (){
         return month;
     }
-    public int year (){
+    public String year (){
         return year;
     }
 }

@@ -14,10 +14,10 @@ public class Person {
     private int age = -99;
     private String[] email = {"not set yet"}; //possibly ArrayList
     private String[] phone = {"not set yet"}; //possibly ArrayList
-    MyDate birthday = new MyDate();
+    //MyDate birthday = new MyDate();
     private String organization = "not set yet";
     private String[] category = {"not set yet"}; //ArrayList
-    Address homeAddress = new Address();
+    //Address homeAddress = new Address();
     private String notes = "not set yet";
     
     
@@ -28,21 +28,20 @@ public class Person {
     
     
     
-    public Person (String name, int age, String[] email, String[] phone, MyDate birhday, String organization, String[] category, Address homeAddress, String notes){
+    public Person (String name, int age, String[] email, String[] phone, /*MyDate birthday,*/ String organization, String[] category, /*Address homeAddress,*/ String notes){
         this.name = name;
         this.age = age;
         this.email = email;
         this.phone = phone;
-        this.birthday = birthday;
+        //this.birthday = birthday;
         this.organization = organization;
         this.category = category;
-        this.homeAddress = homeAddress;
+        //this.homeAddress = homeAddress;
         this.notes = notes;
     }
+   
 
-    Person(String text, int parseInt, MyDate d, String[] email, String[] phone, String text0, Address a, String[] category, String text1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
     
     public void setName (String name){
@@ -57,18 +56,20 @@ public class Person {
     public void setPhone (String[] phone){
         this.phone = phone;
     }
+    /*
     public void setBirthday (MyDate birthday){
         this.birthday = birthday;
-    }
+    }*/
     public void setOrganization (String organization){
         this.organization = organization;
     }
     public void setCategory (String[] category){
         this.category = category;
     }
+    /*
     public void sethomeAddress (Address homeAddress){
         this.homeAddress = homeAddress;
-    }
+    }*/
     public void setDescription (String notes){
         this.notes = notes;
     }
@@ -87,18 +88,20 @@ public class Person {
     public String[] getPhone (){
         return phone;
     }
+    /*
     public MyDate getBirthday (){
         return birthday;
-    }
+    }*/
     public String getOrganization (){
         return organization;
     }
     public String[] getCategory (){
         return category;
     }
+    /*
     public Address getHomeAddress (){
         return homeAddress;
-    }
+    }*/
     public String getNotes (){
         return notes;
     }

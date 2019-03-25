@@ -36,7 +36,6 @@ public class MainGUI extends javax.swing.JFrame {
         nameLabel = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
         ageLabel = new javax.swing.JLabel();
-        dOBLabel = new javax.swing.JLabel();
         deleteProfileButton = new javax.swing.JButton();
         editProfileButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -45,10 +44,10 @@ public class MainGUI extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         categoryQueryCB = new javax.swing.JComboBox<>();
         queryButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         peopleTable = new javax.swing.JTable();
+        doBLabel = new javax.swing.JLabel();
+        personNameLabel = new javax.swing.JLabel();
         newPersonPanel = new javax.swing.JPanel();
         streetTF = new javax.swing.JTextField();
         stateTF = new javax.swing.JTextField();
@@ -121,9 +120,7 @@ public class MainGUI extends javax.swing.JFrame {
 
         ageLabel.setText("Age:");
 
-        dOBLabel.setText("Date of Birth:");
-
-        deleteProfileButton.setText("Delete");
+        deleteProfileButton.setText("Delete Person");
         deleteProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 deleteProfileButtonMouseReleased(evt);
@@ -135,7 +132,12 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        editProfileButton.setText("Edit");
+        editProfileButton.setText("Edit Person");
+        editProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                editProfileButtonMouseReleased(evt);
+            }
+        });
 
         jLabel6.setText("Email 3: ");
 
@@ -159,12 +161,50 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("jLabel7");
-
-        jLabel8.setText("jLabel8");
-
         peopleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -191,15 +231,36 @@ public class MainGUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(peopleTable);
 
+        doBLabel.setText("Date of Birth");
+
+        personNameLabel.setText("jLabel7");
+
         javax.swing.GroupLayout peoplePanelLayout = new javax.swing.GroupLayout(peoplePanel);
         peoplePanel.setLayout(peoplePanelLayout);
         peoplePanelLayout.setHorizontalGroup(
             peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(peoplePanelLayout.createSequentialGroup()
                 .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(peoplePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(searchTF, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                            .addComponent(categoryQueryCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(queryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(deleteProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(peoplePanelLayout.createSequentialGroup()
+                        .addComponent(nameLabel)
+                        .addGap(65, 65, 65)
+                        .addComponent(personNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                    .addGroup(peoplePanelLayout.createSequentialGroup()
                         .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(notesLabel)
                             .addComponent(emailLabel)
@@ -209,53 +270,35 @@ public class MainGUI extends javax.swing.JFrame {
                             .addComponent(addressLabel)
                             .addComponent(categoriesLabel)
                             .addComponent(ageLabel)
-                            .addComponent(nameLabel)
-                            .addComponent(dOBLabel)
                             .addComponent(jLabel6)
                             .addComponent(phoneLabel)
-                            .addComponent(phone3Label))
-                        .addGap(0, 85, Short.MAX_VALUE))
-                    .addGroup(peoplePanelLayout.createSequentialGroup()
-                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(categoryQueryCB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(searchButton)
-                            .addComponent(queryButton))
-                        .addGap(48, 48, 48)
-                        .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(editProfileButton)
-                .addGap(24, 24, 24)
-                .addComponent(deleteProfileButton))
+                            .addComponent(phone3Label)
+                            .addComponent(doBLabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         peoplePanelLayout.setVerticalGroup(
             peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(peoplePanelLayout.createSequentialGroup()
                 .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(editProfileButton)
-                        .addComponent(deleteProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7))
-                    .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchButton)))
+                        .addComponent(searchButton)
+                        .addComponent(editProfileButton)
+                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(peoplePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(personNameLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(categoryQueryCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(queryButton))
+                    .addComponent(queryButton)
+                    .addComponent(deleteProfileButton)
+                    .addComponent(ageLabel))
                 .addGap(5, 5, 5)
                 .addGroup(peoplePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(peoplePanelLayout.createSequentialGroup()
-                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ageLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(dOBLabel)
+                        .addComponent(doBLabel)
                         .addGap(18, 18, 18)
                         .addComponent(emailLabel)
                         .addGap(18, 18, 18)
@@ -274,7 +317,7 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(addressLabel)
                         .addGap(18, 18, 18)
                         .addComponent(categoriesLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(notesLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)))
@@ -369,7 +412,7 @@ public class MainGUI extends javax.swing.JFrame {
                                 .addComponent(firstPhoneTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(newPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(newPersonPanelLayout.createSequentialGroup()
-                                        .addComponent(categoryCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(categoryCB, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(addCategoryButton))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, newPersonPanelLayout.createSequentialGroup()
@@ -566,27 +609,25 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterPersonButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterPersonButtonMouseReleased
-    
-        MyDate d = new MyDate(
-                Byte.parseByte(dateCB.getSelectedItem()+""), 
-                (String[]) monthCB.getSelectedItem(), 
-                Integer.parseInt(yearCB.getSelectedItem()+"")
-        );
-        Address a = new Address(streetTF.getText()+"", stateTF.getText()+"", countryTF.getText()+"", Integer.parseInt(zipTF.getText()+""));
+        //Create new instance of Person 
+        //MyDate d = new MyDate(dateCB.getSelectedItem()+"", monthCB.getSelectedItem()+"", yearCB.getSelectedItem()+"");
+        //Address a = new Address(streetTF.getText()+"", stateTF.getText()+"", countryTF.getText()+"", zipTF.getText()+"");
         String [] email = {firstEmailTF.getText(), secondEmailTF.getText(), thirdEmailTF.getText()};
         String [] phone = {firstPhoneTF.getText(), secondPhoneTF.getText(), thirdPhoneTF.getText()};
         String [] category = {categoryCB.getSelectedItem()+""};
         peopleArrayList.add(new Person(
                 nameTF.getText(),
                 Integer.parseInt(ageTF.getText()), 
-                d,
+                //d,
                 email,
                 phone,
                 organizationTF.getText(),
-                a,
+                //a,
                 category,
                 notesTA.getText()
         ));
+        System.out.println("LOG: new arraylist");
+        //Clear Text field after pressing enter
         nameTF.setText("");
         ageTF.setText("");
         dateCB.setSelectedIndex(0);
@@ -602,25 +643,33 @@ public class MainGUI extends javax.swing.JFrame {
         streetTF.setText("");
         stateTF.setText("");
         countryTF.setText("");
+        zipTF.setText("");
         categoryCB.setSelectedIndex(0);
         notesTA.setText("");
-        System.out.println(peopleArrayList.get(0).getName());
+        System.out.println("LOG: cleared text fields");
+        personNameLabel.setText("hello");
+        //Add entry to the table
         if(peopleArrayList.size() <= peopleTable.getRowCount()){
             for(int row = 0 ; row < peopleArrayList.size(); row++){
                 peopleTable.setValueAt(peopleArrayList.get(row).getName(), row, 0);
-                peopleTable.setValueAt(peopleArrayList.get(row).getCategory(), row, 1);
+                peopleTable.setValueAt(peopleArrayList.get(row).getCategory().toString(), row, 1);
             }
         }
+        System.out.println("LOG: added array list to table");
+        System.out.println(" ");
+        //ensure that te user does not need to fill in all fields 
+        //set the all the jlabels on the people tab
          
     }//GEN-LAST:event_enterPersonButtonMouseReleased
 
     private void searchTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTFActionPerformed
-        // Should I use this or the search button?
+
         
     }//GEN-LAST:event_searchTFActionPerformed
 
     private void deleteProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteProfileButtonActionPerformed
-        // TODO add your handling code here:
+        // Create jdialogue box
+        
     }//GEN-LAST:event_deleteProfileButtonActionPerformed
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
@@ -632,17 +681,43 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteProfileButtonMouseReleased
 
     private void searchButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseReleased
+        
         String searchTerm = searchButton.getText();
         SearchSort s = new SearchSort();
         ArrayList<Person> searchResultArrayList = s.search(peopleArrayList, searchTerm);
-        
+        System.out.println("search completed");
+        if(searchResultArrayList.size() <= peopleTable.getRowCount()){
+            for(int row = 0 ; row < searchResultArrayList.size(); row++){
+                //peopleTable.setValueAt("", row, 0);
+                //peopleTable.setValueAt("", row, 1);
+                peopleTable.setValueAt(searchResultArrayList.get(row).getName(), row, 0);
+                peopleTable.setValueAt(searchResultArrayList.get(row).getCategory(), row, 1);
+            }
+        }
+        System.out.println("LOG: wrote search results to table");
+        System.out.println(" ");
     }//GEN-LAST:event_searchButtonMouseReleased
 
     private void queryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_queryButtonMouseReleased
+        //Query database by category
         String queryCategory = categoryQueryCB.getSelectedItem()+"";
         SearchSort s = new SearchSort();
+        System.out.println("LOG: query completed");
         ArrayList<Person> queryResultArrayList = s.query(peopleArrayList, queryCategory);
+        if(queryResultArrayList.size() <= peopleTable.getRowCount()){
+            for(int row = 0 ; row < queryResultArrayList.size(); row++){
+                peopleTable.setValueAt(queryResultArrayList.get(row).getName(), row, 0);
+                peopleTable.setValueAt(queryResultArrayList.get(row).getCategory(), row, 1);
+            }
+        }
+        System.out.println("LOG: wrote query results to table");
+        System.out.println(" ");
     }//GEN-LAST:event_queryButtonMouseReleased
+
+    private void editProfileButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileButtonMouseReleased
+        // Open Person in editPerson tab -- lots of .setText()
+        
+    }//GEN-LAST:event_editProfileButtonMouseReleased
 
     /**
      * @param args the command line arguments
@@ -678,10 +753,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
     }
-    public static void rickRoll () {
-        //insert selenium code here 
-        //if(name.equals("Rick")){rickRoll};
-    }
+ 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCategoryButton;
@@ -692,9 +765,9 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> categoryCB;
     private javax.swing.JComboBox<String> categoryQueryCB;
     private javax.swing.JTextField countryTF;
-    private javax.swing.JLabel dOBLabel;
     private javax.swing.JComboBox<String> dateCB;
     private javax.swing.JButton deleteProfileButton;
+    private javax.swing.JLabel doBLabel;
     private javax.swing.JButton editProfileButton;
     private javax.swing.JLabel email2Label;
     private javax.swing.JLabel emailLabel;
@@ -722,8 +795,6 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
@@ -740,6 +811,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel organizatonLabel;
     private javax.swing.JPanel peoplePanel;
     private javax.swing.JTable peopleTable;
+    private javax.swing.JLabel personNameLabel;
     private javax.swing.JLabel phone2Label;
     private javax.swing.JLabel phone3Label;
     private javax.swing.JLabel phoneLabel;
