@@ -12,7 +12,7 @@ public class SearchSort {
     public ArrayList <Person> search(ArrayList<Person> peopleArrayList, String searchTerm){
         ArrayList<Person> searchResultArrayList = new ArrayList<Person>();
         for(int i = 0; i < peopleArrayList.size(); i++){   
-           if(searchResultArrayList.get(i).getName().equalsIgnoreCase(searchTerm)){
+           if(peopleArrayList.get(i).getName().equalsIgnoreCase(searchTerm)){
                searchResultArrayList.add(peopleArrayList.get(i));
            }
        }
