@@ -163,6 +163,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="categoriesTableMouseReleased"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -312,7 +315,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="phone2Label" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                                      <EmptySpace pref="65" max="32767" attributes="0"/>
                                       <Component id="displayPhone2Label" min="-2" pref="277" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">

@@ -3,17 +3,23 @@ package code2;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 /*
-Extensibility/TODO list
-- More refined GUI
-- add person button leads to window instead of tab
-- allow a person to be placed in more than one cate2gory
-  - replace category combo box with a popup box containing check boxes and an add category button and text field
-- set quiery combo box to clear when refresh button isrootPaneCheckingEnabled pressed
-- figure out how to switch tabs
-- ensure that the user does not need to fill in all fields
+# Extensibility/TODO list
++ Add file reading/writing capability
+  + Write to a file when modifictions are made, read from it on startup
++ Allow the user to define and edit categories
++ Allow a Person to be placed in multiple categories
++ Give functionality to the import/export tab
++ Replace email and phone arrays in Person template class with an ArrayList of contact information
+  + View contact information with a table
++ Investigate the ability to use Selenium Webdriver to fetch contact information from webmail services
+  + Add method using Selenium Webdriver to Rickroll the user if the input a person named Rick
++ Improve modularity and elegance of the code by making the main class independent of the GUI class
++ Improve layout and look/feel
++ Switch to the edit person tab when the edit person button is pressed
 */
 public class MainGUI extends javax.swing.JFrame {
 
+    //Declaration of the array list of class People central to the database 
     private ArrayList<Person> peopleArrayList = new ArrayList<Person>();
     
     /**
@@ -21,7 +27,8 @@ public class MainGUI extends javax.swing.JFrame {
      */
     public MainGUI() {
         initComponents();
-    } 
+    }
+    //It breaks if I delete these :c
     private void searchTFActionPerformed(java.awt.event.ActionEvent evt){}
     private void deleteProfileButtonActionPerformed(java.awt.event.ActionEvent evt){}
 
@@ -200,6 +207,11 @@ public class MainGUI extends javax.swing.JFrame {
                 "Categories"
             }
         ));
+        categoriesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                categoriesTableMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(categoriesTable);
 
         newCategoryTF.addActionListener(new java.awt.event.ActionListener() {
@@ -504,7 +516,7 @@ public class MainGUI extends javax.swing.JFrame {
                                 .addComponent(displayPhone1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(peoplePanelLayout.createSequentialGroup()
                                 .addComponent(phone2Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                                 .addComponent(displayPhone2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(peoplePanelLayout.createSequentialGroup()
                                 .addComponent(phone3Label)
@@ -964,18 +976,23 @@ public class MainGUI extends javax.swing.JFrame {
 
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
-        
+	//No functionality yet :c
     }//GEN-LAST:event_exportButtonActionPerformed
 
     private void deleteProfileButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteProfileButtonMouseReleased
-        deletePersonDialogue.setVisible(true);
+	//Displays the delete person dialogue box
+	deletePersonDialogue.setVisible(true);
+	//Sets the size and location on screen (in that order) of the dialogue box
         deletePersonDialogue.setBounds(500, 300, 300, 100);
     }//GEN-LAST:event_deleteProfileButtonMouseReleased
 
     private void searchButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseReleased
-        String searchTerm = searchTF.getText();
+	//Searches the array list by name
+	String searchTerm = searchTF.getText();
         SearchSort s = new SearchSort();
+	//creates temporary ArrayList of the search results assignes it to the return value of the searhc method in SearchSort
         ArrayList<Person> searchResultArrayList = s.search(peopleArrayList, searchTerm);
+	//writes the temporary array list to the table
         clearTable();
         if(searchResultArrayList.size() <= peopleTable.getRowCount()){
             for(int row = 0 ; row < searchResultArrayList.size(); row++){
@@ -983,17 +1000,18 @@ public class MainGUI extends javax.swing.JFrame {
                 peopleTable.setValueAt(searchResultArrayList.get(row).getCategory().toString(), row, 1);
             }
         }
-        System.out.println(searchResultArrayList.size());
         System.out.println("LOG: wrote search results to table");
         System.out.println(" ");
     }//GEN-LAST:event_searchButtonMouseReleased
 
     private void queryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_queryButtonMouseReleased
-        //Query database by category
+        //Queries the ArrayList by category
         String queryCategory = categoryQueryCB.getSelectedItem()+"";
         SearchSort s = new SearchSort();
-        clearTable();
+	//Creates temporary array list of the query results and assigns it to the return value of the method query in the SearchSort class
         ArrayList<Person> queryResultArrayList = s.query(peopleArrayList, queryCategory);
+	//Writes temporary Array List to the table
+        clearTable();
         if(queryResultArrayList.size() <= peopleTable.getRowCount()){
             for(int row = 0 ; row < queryResultArrayList.size(); row++){
                 peopleTable.setValueAt(queryResultArrayList.get(row).getName(), row, 0);
@@ -1005,10 +1023,10 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_queryButtonMouseReleased
 
     private void editProfileButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileButtonMouseReleased
-        
-        //Get the selected person
+        //Get the name of the selected person
         int selected = peopleTable.getSelectedRow();
         String namePersonToEdit = peopleTable.getValueAt(selected, 0)+"";
+	//Loops throught the Array List until the person has been found  
         int index = 0;
         for(int i = 0; i < peopleArrayList.size(); i++){
             if(namePersonToEdit.equals(peopleArrayList.get(i).getName())){
@@ -1048,25 +1066,13 @@ public class MainGUI extends javax.swing.JFrame {
         clearTable();
         clearDetails();
         writePeopleToTable();
+	System.out.println("LOG: edited person");
     }//GEN-LAST:event_editProfileButtonMouseReleased
 
-    private void addCategoryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCategoryButtonMouseReleased
-        //How would this work? JDialogue?
-        //categoryArrayList.add(input)
-        //change new person combo box and query category combo box
-        editCategoryDialogue.setVisible(true);
-        editCategoryDialogue.setBounds(500, 300, 340, 230);
-        //if(/*peopleArrayList.size()*/ <= categoriesTable.getRowCount()){
-        //    for(int row = 0 ; row < /*peopleArrayList.size()*/; row++){
-        //        categoriesTable.setValueAt(/*peopleArrayList.get(row).getCategory().toString()*/, row, 1);
-        //    }
-        //}
-        System.out.println("LOG: opened edit category dialogue");
-        
-    }//GEN-LAST:event_addCategoryButtonMouseReleased
-
     private void peopleTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peopleTableMouseReleased
-        int selected = peopleTable.getSelectedRow();
+	//display the information fo the selected entry in the table in the labels to the right
+	//Finds selected person in the database
+	int selected = peopleTable.getSelectedRow();
         String namePersonToDisplay = peopleTable.getValueAt(selected, 0)+"";
         int index = 0;
         for(int i = 0; i < peopleArrayList.size(); i++){
@@ -1075,6 +1081,7 @@ public class MainGUI extends javax.swing.JFrame {
                 break;
             } 
         }
+	//display everything -- switch to method?
         String [] email = peopleArrayList.get(index).getEmail(); 
         String [] phone = peopleArrayList.get(index).getPhone();
        
@@ -1091,13 +1098,14 @@ public class MainGUI extends javax.swing.JFrame {
         displayAddressLabel.setText(peopleArrayList.get(index).getStreet() + ", " + peopleArrayList.get(index).getState() + ", " + peopleArrayList.get(index).getCountry());
         displayCategoryLabel.setText(peopleArrayList.get(index).getCategory());
         displayNotesLabel.setText(peopleArrayList.get(index).getNotes());
-        System.out.println("LOG: displayed details");
+        System.out.println("LOG: displayed details of selected person");
         System.out.println(" ");
         
     }//GEN-LAST:event_peopleTableMouseReleased
 
     private void refreshButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refreshButtonMouseReleased
-        clearTable();
+	// Refreshes the table and the detail entries
+	clearTable();
         writePeopleToTable();
         clearDetails();
         //TODO: set query combo box to clear
@@ -1109,7 +1117,9 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelDeleteButtonMouseReleased
 
     private void confirmDeletePersonButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmDeletePersonButtonMouseReleased
-        int selected = peopleTable.getSelectedRow();
+	// Delete a person from the arraylist
+	//Find the person from the table in the arraylist
+	int selected = peopleTable.getSelectedRow();
         String namePersonToDelete = peopleTable.getValueAt(selected, 0)+"";
         int index = 0;
         for(int i = 0; i < peopleArrayList.size(); i++){
@@ -1118,61 +1128,38 @@ public class MainGUI extends javax.swing.JFrame {
                 break;
             } 
         }
+	//remove the selected person from the array list
         peopleArrayList.remove(index);
         deletePersonDialogue.setVisible(false);
         clearTable();
         writePeopleToTable();
+	System.out.println("LOG: removed person");
         
     }//GEN-LAST:event_confirmDeletePersonButtonMouseReleased
 
     private void newCategoryTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCategoryTFActionPerformed
-        // TODO add your handling code here:
-        
+              
     }//GEN-LAST:event_newCategoryTFActionPerformed
 
     private void cancelEditCategoryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelEditCategoryButtonMouseReleased
-        editCategoryDialogue.setVisible(false); 
-        System.out.println("LOG: edit categories dialoge canceled");
+        
     }//GEN-LAST:event_cancelEditCategoryButtonMouseReleased
 
     private void deleteCategoryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCategoryButtonMouseReleased
-        // find the selected row
-        int selected = categoriesTable.getSelectedRow();
-        String categoryToDelete = categoriesTable.getValueAt(selected, 0)+"";
-        int index = 0;
-        for(int i = 0; i < categoriesTable.getRowCount(); i++){
-            if(categoryToDelete.equals(categoryCB.getItemAt(i))){
-                index = i;
-                break;
-            } 
-        }
-        //delete index from the array/arraylist of categories
-        categoryCB.removeItemAt(index);
-        categoryQueryCB.removeItemAt(index);
         
     }//GEN-LAST:event_deleteCategoryButtonMouseReleased
 
     private void newCategoryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newCategoryButtonMouseReleased
         
-        String newCategory = newCategoryTF.getText();
-        categoryQueryCB.addItem(newCategory);
-        categoryCB.addItem(newCategory);
-        
-        //clear the table
-        for(int i = 0; i < categoriesTable.getRowCount(); i++){
-            for(int k = 0; k < categoriesTable.getColumnCount(); k++){
-                categoriesTable.setValueAt("", i, k);
-            }
-        }
-        //rewrite the categories to the table 
-        if(categoryCB.getComponentCount() <= categoriesTable.getRowCount()){
-            for(int row = 0 ; row < categoryCB.getComponentCount(); row++){
-                categoriesTable.setValueAt(categoryCB.getItemAt(row), row, 0);
-            }
-        }
-        newCategoryTF.setText(" "); 
-        
     }//GEN-LAST:event_newCategoryButtonMouseReleased
+
+    private void categoriesTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoriesTableMouseReleased
+        
+    }//GEN-LAST:event_categoriesTableMouseReleased
+
+    private void addCategoryButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCategoryButtonMouseReleased
+
+    }//GEN-LAST:event_addCategoryButtonMouseReleased
 
     /**
      * @param args the command line arguments
@@ -1209,6 +1196,7 @@ public class MainGUI extends javax.swing.JFrame {
         });
     }
     
+    //method to clear people table 
     public void clearTable() {
         for(int i = 0; i < peopleTable.getRowCount(); i++){
             for(int k = 0; k < peopleTable.getColumnCount(); k++){
@@ -1216,6 +1204,7 @@ public class MainGUI extends javax.swing.JFrame {
             }
         }
     }
+    //method to clear details in labels
     public void clearDetails(){
         displayNameLabel.setText(" ");
         displayAgeLabel.setText("");
@@ -1231,6 +1220,7 @@ public class MainGUI extends javax.swing.JFrame {
         displayCategoryLabel.setText("");
         displayNotesLabel.setText("");
     }
+    //method to display information in the table
     public void writePeopleToTable(){
         if(peopleArrayList.size() <= peopleTable.getRowCount()){
             for(int row = 0 ; row < peopleArrayList.size(); row++){

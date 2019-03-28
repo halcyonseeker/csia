@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author apotheosis
  */
 public class Person {
+    //template class
     private String name = "not set yet";
     private String age = "not set yet";
     private String date = "not set yet";

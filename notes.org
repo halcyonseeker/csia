@@ -1,2 +1,0 @@
-
-* TODO figure out how to add the file chooser to a dropdown menu

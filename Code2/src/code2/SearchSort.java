@@ -21,28 +21,9 @@ public class SearchSort {
             } 
         }
         return searchResultArrayList; 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*ArrayList<Person> searchResultArrayList = new ArrayList<Person>();
-        for(int i = 0; i < peopleArrayList.size(); i++){   
-           if(peopleArrayList.get(i).getName().equalsIgnoreCase(searchTerm)){
-               searchResultArrayList.add(peopleArrayList.get(i));
-           }
-       }i
-        return searchResultArrayList; */
     }
+
+    
     public ArrayList <Person> query(ArrayList<Person> peopleArrayList, String queryCategory){
         ArrayList<Person> queryResultArrayList = new ArrayList<Person>();
         for(int i = 0; i < peopleArrayList.size(); i++){
