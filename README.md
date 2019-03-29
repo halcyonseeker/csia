@@ -45,3 +45,11 @@ You'll also see an Import/Export Person tab; just ignore it, I've not ben succes
 + Improve modularity and elegance of the code by making the main class independent of the GUI class
 + Improve layout and look/feel
 + Switch to the edit person tab when the edit person button is pressed
+
+# Version List
+
+### Version 1.0 (Planned) -- First stable release -- unknown
+
+### Version 0.5 (Planned) -- Meets all functionality goals outlined in the IA -- unknown 
+
+### Version 0.0 (Current Version) -- Minimum viable product for Internal Assesment -- 03-29-2019
