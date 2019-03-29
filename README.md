@@ -2,13 +2,13 @@
 This is my Internal Assesment for my IB HL Computer Science class
 
 # Installation instructions
-+ Clone or download the Code2.jar file in Code2/dist/
++ Clone or download the addressbook.jar file 
 + In the command line:
-  + cd path/to/Code2.jar
-  + java -jar Code2.jar
+  + cd path/to/addressbook.jar
+  + java -jar addressbook.jar
   + (This will leave the parent terminal hanging around, so it is recommended to only do this to diagnose a problem)
 + In a GUI:
-  + Navigate to path/to/Code2
+  + Navigate to path/to/addressbook.jar
   + Click on it. If that does not work, right/control click on it and select any likely suspects from the menu
 
 # Manual
